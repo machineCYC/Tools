@@ -66,6 +66,15 @@ def add_Daydelta2Date(date, days):
     return datetime.strftime(date, "%Y-%m-%d")
 
 
+def calculate_Datenbr(day1: str, day2: str) -> int:
+    assert day1 <= day2, "day2 必須大於等於 day1"
+
+    dis_day = datetime.strptime(day2, "%Y-%m-%d") - datetime.strptime(
+        day1, "%Y-%m-%d"
+    )
+    return int(dis_day.days)
+
+
 def calculate_Weeknbr(yweek1, yweek2):
     assert yweek1 <= yweek2, "yweek2 必須大於等於 yweek1"
 
