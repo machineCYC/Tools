@@ -87,6 +87,18 @@ def calculate_Weeknbr(yweek1, yweek2):
     return int(dis_day.days / 7)
 
 
+def calculate_WeekOfMonth(date):
+    """
+    ex: date: 2020-12-01 --> 1
+    ex: date: 2020-12-28 --> 5
+    ex: date: 2019-12-30 --> 6
+    """
+    date = datetime.strptime(date, "%Y-%m-%d")
+
+    nom = date.isocalendar()[1] - date.replace(day=1).isocalendar()[1] + 1
+    return nom + 52 if nom < 0 else nom
+
+    
 def get_Current_Date():
     date = datetime.now().strftime("%Y-%m-%d")
     return date

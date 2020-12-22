@@ -8,6 +8,7 @@ from Tools.utility.time import (
     add_Daydelta2Date,
     calculate_Datenbr,
     calculate_Weeknbr,
+    calculate_WeekOfMonth,
 )
 
 
@@ -119,3 +120,16 @@ testdata_calculate_Weeknbr = [
 def test_calculate_Weeknbr(yweek1, yweek2, expected):
     resp = calculate_Weeknbr(yweek1, yweek2)
     assert resp == expected
+
+
+test_calculate_WeekOfMonth = [
+    ("2020-12-01", 1),
+    ("2020-12-28", 5),
+    ("2019-12-30", 6),
+]
+@pytest.mark.parametrize(
+    "date, expected",
+    test_calculate_WeekOfMonth,
+)
+def test_calculate_WeekOfMonth(date, expected):
+    resp = calculate_WeekOfMonth(date)
